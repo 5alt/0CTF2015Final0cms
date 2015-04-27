@@ -1,0 +1,18 @@
+﻿$def with (tplData)
+$:tplData['render'].header(tplData)
+<div id="content">
+<article id="post_list">
+$for i in tplData['cmsList']:
+    <section class="post-$:i['id'] post type-post status-publish format-standard hentry category-$:i['id'] tag-appreciate" id="sectionid-$:i['id']">
+        <h2><a href="$makeUrl('index','show',{'id':i['id']})">$:i['name']</a></h2>
+        $subStr(i['content'],1,100)
+        <small class="meta">$:i['createTime'] | view：$:i['views'] | <a href="$makeUrl('index','show',{'id':i['id']})#comments" title="$:i['name']">Comment($:i['commentCount'])</a></small>
+        <p> <a href="$makeUrl('index','show',{'id':i['id']})" class="more-link">view all &raquo;</a></p>
+    </section>
+</article>
+<nav class="navigation">
+$:tplData['pageString']
+</nav>
+    </div>
+
+$:tplData['render'].footer(tplData)

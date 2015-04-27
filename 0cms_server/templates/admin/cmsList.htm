@@ -1,0 +1,26 @@
+$def with (tplData)
+$:tplData['render'].header()
+    <h2>Manage Posts <a href="$makeUrl('cms','add',{})">Add</a></h2>
+<table width="800" border="0" cellspacing="0" cellpadding="1" class="list">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Order</th>
+        <th>Manage</th>
+    </tr>
+$for i in tplData['cmsList']:
+    <tr> <td>$:i['id'] </td> <td>$:i['name']</td><td>$:tplData['statusList'][i['status']]</td>
+        <td>$:i['orders']</td>
+        <td>
+            <a href="$makeUrl('index','show',{'id':i['id']})" >View</a>
+             |
+            <a href="$makeUrl('cms','edit',{'id':i['id']})" >Edit</a>
+            | <a href="$makeUrl('cms','delete',{'id':i['id']})" onclick="return confirm('Comfirm deletion?')">Delete</a>
+        </td>
+    </tr>
+</table>
+<nav class="navigation"
+    $:tplData['pageString']
+</nav>
+$:tplData['render'].footer()

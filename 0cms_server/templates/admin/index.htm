@@ -1,0 +1,8 @@
+$def with (tplData)
+$:tplData['render'].header()
+Welcome<hr />
+IP:$:tplData['info']['clientIp']<hr />
+Server IP:$:tplData['info']['serverIp']<hr />
+UA:$:tplData['info']['ua']<hr />
+Time:$:tplData['info']['date']<hr />
+$:tplData['render'].footer()
